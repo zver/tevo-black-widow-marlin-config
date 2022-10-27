@@ -3,7 +3,7 @@
 # License: BSD
 set -e
 
-MARLIN_GIT_DIR="/home/zver/develop/tevo/Marlin"
+MARLIN_GIT_DIR="$HOME/develop/tevo/Marlin"
 BRANCH="2.1.x"
 
 TEVO_CONFIG_DIR=`dirname $(realpath $0)`

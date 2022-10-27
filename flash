@@ -1,8 +1,8 @@
 #!/bin/bash -x
 HEX_FILE=`ls -1 /tmp/arduino_build_*/Marlin.ino.hex|tail -n1`
-sudo chown zver:zver /dev/ttyUSB*; ls -la /dev/ttyUSB*
+sudo chown $USER:$USER /dev/ttyUSB*; ls -la /dev/ttyUSB*
 USB_DEV=`ls -1 /dev/ttyUSB*|sort -n|tail -n1`
 
-ARDUINO_DIR="/home/zver/.arduino15/packages/arduino/tools/avrdude/6.3.0-arduino17"
+ARDUINO_DIR="$HOME/.arduino15/packages/arduino/tools/avrdude/6.3.0-arduino17"
 #$ARDUINO_DIR/bin/avrdude -C$ARDUINO_DIR/etc/avrdude.conf -patmega2560 -cusbasp -Pusb -D -Uflash:w:$HEX_FILE:i
 $ARDUINO_DIR/bin/avrdude -C$ARDUINO_DIR/etc/avrdude.conf -patmega2560 -cwiring -P$USB_DEV -b115200 -D -Uflash:w:$HEX_FILE:i
