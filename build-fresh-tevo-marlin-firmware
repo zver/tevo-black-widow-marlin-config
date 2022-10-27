@@ -1,0 +1,29 @@
+#!/bin/bash -x
+set -e
+
+MARLIN_GIT_DIR="/home/zver/develop/tevo/Marlin"
+BRANCH="2.1.x"
+
+TEVO_CONFIG_DIR=`dirname $(realpath $0)`
+MARLIN_ARDUINO_FILE="$MARLIN_GIT_DIR/Marlin/Marlin.ino"
+
+# Clone repo
+if [ ! -d "$MARLIN_GIT_DIR" ]; then
+    git clone https://github.com/MarlinFirmware/Marlin.git "$MARLIN_GIT_DIR"
+fi
+
+# Update repo
+cd $MARLIN_GIT_DIR
+git reset --hard HEAD
+git checkout "$BRANCH"
+git pull
+
+# Update config files in repo
+cat $TEVO_CONFIG_DIR/Configuration.h      > "$MARLIN_GIT_DIR/Marlin/Configuration.h"
+cat $TEVO_CONFIG_DIR/Configuration_adv.h  > "$MARLIN_GIT_DIR/Marlin/Configuration_adv.h"
+
+
+echo "You can build Marlin with project Arduino IDE file $MARLIN_ARDUINO_FILE"
+echo "Use 'Arduino/Genuino Mega or Mega 2560' board in Arduino IDE for compile and flash"
+arduino $MARLIN_ARDUINO_FILE
+
