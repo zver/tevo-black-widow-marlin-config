@@ -1,0 +1,7 @@
+#!/bin/bash -x
+sudo chown zver:zver /dev/ttyUSB*; ls -la /dev/ttyUSB*
+USB_DEV=`ls -1 /dev/ttyUSB*|sort -n|tail -n1`
+
+ARDUINO_DIR="/home/zver/.arduino15/packages/arduino/tools/avrdude/6.3.0-arduino17"
+#$ARDUINO_DIR/bin/avrdude -C$ARDUINO_DIR/etc/avrdude.conf -patmega2560 -cusbasp -Pusb -D -Uflash:w:/tmp/arduino_build_563482/Marlin.ino.hex:i
+$ARDUINO_DIR/bin/avrdude -C$ARDUINO_DIR/etc/avrdude.conf -q -q -patmega2560 -cwiring -P$USB_DEV -b115200 -D -Uflash:w:/tmp/arduino_build_563482/Marlin.ino.hex:i
