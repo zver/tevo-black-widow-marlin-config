@@ -28,6 +28,6 @@ cat $TEVO_CONFIG_DIR/Configuration_adv.h  > "$MARLIN_GIT_DIR/Marlin/Configuratio
 echo "You can build Marlin with project Arduino IDE file $MARLIN_ARDUINO_FILE"
 echo "Use 'Arduino/Genuino Mega or Mega 2560' board in Arduino IDE for compile and flash"
 echo "Check that u8glib-HAL library was installed in Arduino IDE"
-echo "You need to push reset button right before Arduino IDE starts to upload firmware after compile and checking it. The reset button was placed close to USB socket on the board. You can push it many times and stop push after you see starts uploading stage at Arduini IDE".
+echo "You need to push reset button right before Arduino IDE starts to upload firmware after compile and checking it. The reset button was placed close to USB socket on the board. You can push it many times and stop push after you see starts uploading stage at Arduini IDE. Also you can use flash script from this dir. Push reset button and start flash script. Check that external power is ON.".
 arduino $MARLIN_ARDUINO_FILE
 
