@@ -1,6 +1,5 @@
 #!/bin/bash -x
 # Author: Denis Klimov <klimov.d.e@gmail.com>
-# License: BSD
 set -e
 
 MARLIN_GIT_DIR="$HOME/develop/tevo/Marlin"
