@@ -1,15 +1,24 @@
-#!/bin/bash -x
+#!/bin/bash
+# ./flash [path-to-hex-file]
+
+if [ -n "$1" ]; then
+    HEX_FILE="$1"
+else
+    HEX_FILE=`ls -1 /tmp/arduino_build_*/Marlin.ino.hex|tail -n1`
+fi
+
 ARDUINO_DIR="$HOME/.arduino15/packages/arduino/tools/avrdude/6.3.0-arduino17"
 USB_DEV=`ls -1 /dev/ttyUSB*|sort -n|tail -n1`
-HEX_FILE=`ls -1 /tmp/arduino_build_*/Marlin.ino.hex|tail -n1`
+
 
 #PROGRAMMER_PARAMS="-cusbasp -Pusb"
 PROGRAMMER_PARAMS="-cwiring -P$USB_DEV"
 
 echo "Firmware file for upload:"
 ls -l $HEX_FILE
+echo "USB device for upload:"
 
-sudo chown $USER:$USER /dev/ttyUSB*; ls -la /dev/ttyUSB*
+sudo chown $USER:$USER /dev/ttyUSB*; ls -l /dev/ttyUSB*
 $ARDUINO_DIR/bin/avrdude -C$ARDUINO_DIR/etc/avrdude.conf \
         -patmega2560 \
         $PROGRAMMER_PARAMS \
