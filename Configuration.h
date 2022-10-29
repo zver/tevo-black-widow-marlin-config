@@ -138,11 +138,8 @@
 //#define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-#ifdef TEVO_BLTOUCH
-  #define CUSTOM_MACHINE_NAME "TEVO Widow Touch"
-#else
-  #define CUSTOM_MACHINE_NAME "TEVO Widow"
-#endif
+// Please don't touch TEVO_BUILD_LABEL. build-fresh-tevo-marlin-firmware script use it
+#define CUSTOM_MACHINE_NAME "TEVO_BUILD_LABEL"
 
 
 // Printer's unique ID, used by some programs to differentiate between machines.
@@ -1712,7 +1709,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 200
+#define Z_MAX_POS 300
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0
@@ -1935,7 +1932,7 @@
   // Gradually reduce leveling correction until a set height is reached,
   // at which point movement will be level to the machine's XY plane.
   // The height can be set with M420 Z<height>
-  #define ENABLE_LEVELING_FADE_HEIGHT
+  //#define ENABLE_LEVELING_FADE_HEIGHT
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
     #define DEFAULT_LEVELING_FADE_HEIGHT 10.0 // (mm) Default fade height.
   #endif
@@ -2530,7 +2527,7 @@
 //  If CLOCKWISE normally moves DOWN this makes it go UP.
 //  If CLOCKWISE normally moves UP this makes it go DOWN.
 //
-//#define REVERSE_MENU_DIRECTION
+#define REVERSE_MENU_DIRECTION
 
 //
 // This option reverses the encoder direction for Select Screen.
