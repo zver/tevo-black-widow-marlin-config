@@ -7,7 +7,6 @@ GIT_SHA="2.1.2.1"
 
 TEVO_CONFIG_DIR=`dirname $(realpath $0)`
 MARLIN_ARDUINO_FILE="$MARLIN_GIT_DIR/Marlin/Marlin.ino"
-LABEL="Build date: $(date '+%F %H:%m'). Branch: $GIT_SHA"
 
 # Clone repo
 if [ ! -d "$MARLIN_GIT_DIR" ]; then
@@ -17,9 +16,18 @@ fi
 # Update repo
 cd $MARLIN_GIT_DIR
 git reset --hard HEAD
+git checkout 2.1.x
 git pull
 git branch -a |grep -q tevo-with-zver-config && git branch -d tevo-with-zver-config
 git checkout -b tevo-with-zver-config "$GIT_SHA"
+
+# Check versions
+#grep 'MARLIN_HEX_VERSION ' ../Marlin/Marlin/src/inc/Version.h
+#grep VERSION Configuration_adv.h
+
+# Make usefull label for Marlin screen.
+GIT_DATE=`git show --no-patch --no-notes --date=short --pretty='%cd' $GIT_SHA`
+LABEL="Build date: $(date '+%F %H:%m'). GIT: $GIT_SHA ($GIT_DATE)"
 
 
 # Update config files in repo

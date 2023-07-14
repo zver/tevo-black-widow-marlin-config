@@ -30,7 +30,7 @@
  *
  * Basic settings can be found in Configuration.h
  */
-#define CONFIGURATION_ADV_H_VERSION 02010200
+#define CONFIGURATION_ADV_H_VERSION MARLIN_HEX_VERSION
 
 // @section develop
 
@@ -2131,12 +2131,12 @@
  * Override if the automatically selected points are inadequate.
  */
 #if EITHER(AUTO_BED_LEVELING_3POINT, AUTO_BED_LEVELING_UBL)
-  //#define PROBE_PT_1_X 15
-  //#define PROBE_PT_1_Y 180
-  //#define PROBE_PT_2_X 15
-  //#define PROBE_PT_2_Y 20
-  //#define PROBE_PT_3_X 170
-  //#define PROBE_PT_3_Y 20
+  #define PROBE_PT_1_X 180
+  #define PROBE_PT_1_Y 180
+  #define PROBE_PT_2_X 25
+  #define PROBE_PT_2_Y 40
+  #define PROBE_PT_3_X 300
+  #define PROBE_PT_3_Y 40
 #endif
 
 /**

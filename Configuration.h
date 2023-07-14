@@ -35,7 +35,7 @@
  *
  * Advanced settings can be found in Configuration_adv.h
  */
-#define CONFIGURATION_H_VERSION 02010200
+#define CONFIGURATION_H_VERSION MARLIN_HEX_VERSION
 
 //===========================================================================
 //============================= Getting Started =============================
@@ -1489,7 +1489,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 50, 15, -1 }
+#define NOZZLE_TO_PROBE_OFFSET { 20, -30, -1 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1877,14 +1877,14 @@
  *   leveling in steps so you can manually adjust the Z height at each grid-point.
  *   With an LCD controller the process is guided step-by-step.
  */
-//#define AUTO_BED_LEVELING_3POINT
+#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
 //#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
-#ifdef TEVO_BLTOUCH
-  #define AUTO_BED_LEVELING_BILINEAR
-#endif
+//#ifdef TEVO_BLTOUCH
+//  #define AUTO_BED_LEVELING_BILINEAR
+//#endif
 
 #ifndef TEVO_BLTOUCH
   #define MESH_BED_LEVELING    // Enable mesh bed leveling.
