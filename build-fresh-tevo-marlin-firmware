@@ -3,12 +3,11 @@
 set -e
 
 MARLIN_GIT_DIR="$HOME/develop/tevo/Marlin"
-BRANCH="2.1.x"
-#BRANCH="bugfix-2.1.x"
+GIT_SHA="2.1.2.1"
 
 TEVO_CONFIG_DIR=`dirname $(realpath $0)`
 MARLIN_ARDUINO_FILE="$MARLIN_GIT_DIR/Marlin/Marlin.ino"
-LABEL="Build date: $(date '+%F %H:%m'). Branch: $BRANCH"
+LABEL="Build date: $(date '+%F %H:%m'). Branch: $GIT_SHA"
 
 # Clone repo
 if [ ! -d "$MARLIN_GIT_DIR" ]; then
@@ -18,8 +17,10 @@ fi
 # Update repo
 cd $MARLIN_GIT_DIR
 git reset --hard HEAD
-git checkout "$BRANCH"
-#git pull
+git pull
+git branch -a |grep -q tevo-with-zver-config && git branch -d tevo-with-zver-config
+git checkout -b tevo-with-zver-config "$GIT_SHA"
+
 
 # Update config files in repo
 cat $TEVO_CONFIG_DIR/Configuration.h      > "$MARLIN_GIT_DIR/Marlin/Configuration.h"
