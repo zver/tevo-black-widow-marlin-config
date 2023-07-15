@@ -2132,11 +2132,11 @@
  */
 #if EITHER(AUTO_BED_LEVELING_3POINT, AUTO_BED_LEVELING_UBL)
   #define PROBE_PT_1_X 180
-  #define PROBE_PT_1_Y 180
+  #define PROBE_PT_1_Y 220
   #define PROBE_PT_2_X 25
-  #define PROBE_PT_2_Y 40
-  #define PROBE_PT_3_X 300
-  #define PROBE_PT_3_Y 40
+  #define PROBE_PT_2_Y 25
+  #define PROBE_PT_3_X 330
+  #define PROBE_PT_3_Y 25
 #endif
 
 /**
