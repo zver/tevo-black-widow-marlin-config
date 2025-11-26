@@ -3,7 +3,7 @@
 set -e
 
 MARLIN_GIT_DIR="$HOME/develop/tevo/Marlin"
-GIT_SHA="2.1.2.1"
+GIT_SHA="2.1.2.5"
 
 TEVO_CONFIG_DIR=`dirname $(realpath $0)`
 MARLIN_ARDUINO_FILE="$MARLIN_GIT_DIR/Marlin/Marlin.ino"

@@ -1105,20 +1105,20 @@
 
 /**
  * Idle Stepper Shutdown
- * Set DISABLE_INACTIVE_? 'true' to shut down axis steppers after an idle period.
+ * Set DISABLE_IDLE_? 'true' to shut down axis steppers after an idle period.
  * The Deactive Time can be overridden with M18 and M84. Set to 0 for No Timeout.
  */
-#define DEFAULT_STEPPER_DEACTIVE_TIME 120
-#define DISABLE_INACTIVE_X true
-#define DISABLE_INACTIVE_Y true
-#define DISABLE_INACTIVE_Z true  // Set 'false' if the nozzle could fall onto your printed part!
-#define DISABLE_INACTIVE_I true
-#define DISABLE_INACTIVE_J true
-#define DISABLE_INACTIVE_K true
-#define DISABLE_INACTIVE_U true
-#define DISABLE_INACTIVE_V true
-#define DISABLE_INACTIVE_W true
-#define DISABLE_INACTIVE_E true
+#define DEFAULT_STEPPER_TIMEOUT_SEC 120
+#define DISABLE_IDLE_X true
+#define DISABLE_IDLE_Y true
+#define DISABLE_IDLE_Z true  // Set 'false' if the nozzle could fall onto your printed part!
+#define DISABLE_IDLE_I true
+#define DISABLE_IDLE_J true
+#define DISABLE_IDLE_K true
+#define DISABLE_IDLE_U true
+#define DISABLE_IDLE_V true
+#define DISABLE_IDLE_W true
+#define DISABLE_IDLE_E true
 
 // Default Minimum Feedrates for printing and travel moves
 #define DEFAULT_MINIMUMFEEDRATE       0.0     // (mm/s. °/s for rotational-only moves) Minimum feedrate. Set with M205 S.
@@ -1606,7 +1606,7 @@
   // SD Card Sorting options
   #if ENABLED(SDCARD_SORT_ALPHA)
     #define SDSORT_LIMIT       40     // Maximum number of sorted items (10-256). Costs 27 bytes each.
-    #define FOLDER_SORTING     -1     // -1=above  0=none  1=below
+    #define SDSORT_FOLDERS     -1     // -1=above  0=none  1=below
     #define SDSORT_GCODE       false  // Allow turning sorting on/off with LCD and M34 G-code.
     #define SDSORT_USES_RAM    false  // Pre-allocate a static array for faster pre-sorting.
     #define SDSORT_USES_STACK  false  // Prefer the stack for pre-sorting to give back some SRAM. (Negated by next 2 options.)
